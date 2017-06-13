@@ -21,7 +21,7 @@ def sanitize(text):
     if text.startswith('#'):
         return text[text.rindex('#')+1:].strip()
     else:
-        return text.strip()
+        return text
 
 def parse(text):
     res = []
