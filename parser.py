@@ -50,9 +50,7 @@ def answer(tokenized, query):
             while token[0] >= stack[-1][0]:
                 top = stack.pop()
                 if idx == len(query):
-                    idx = len(query) - 1
-                elif top[0] == query[idx]:
-                    idx -= 1
+                    return answers
             if query[idx] == stack[-1][1]:
                 idx += 1
             stack.append(token)
