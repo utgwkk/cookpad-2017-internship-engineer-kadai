@@ -2,7 +2,9 @@ import sys
 from collections import deque
 
 def calculate_level(text):
-    if text.startswith('######'):
+    if text.startswith('#######'):
+        return 0
+    elif text.startswith('######'):
         return 1
     elif text.startswith('#####'):
         return 2
@@ -18,7 +20,7 @@ def calculate_level(text):
         return 0
 
 def sanitize(text):
-    if text.startswith('#'):
+    if text.startswith('#') and not text.startswith('#######'):
         return text[text.rindex('#')+1:].strip()
     else:
         return text
