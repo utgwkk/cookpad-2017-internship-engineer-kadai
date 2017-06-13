@@ -1,6 +1,7 @@
 import sys
 from collections import deque
 
+
 def calculate_level(text):
     if text.startswith('#######'):
         return 0
@@ -19,11 +20,13 @@ def calculate_level(text):
     else:
         return 0
 
+
 def sanitize(text):
     if text.startswith('#') and not text.startswith('#######'):
         return text[text.rindex('#')+1:].strip()
     else:
         return text
+
 
 def parse(text):
     res = []
@@ -36,6 +39,7 @@ def parse(text):
         res.append((level, sanitize(line)))
 
     return res
+
 
 def answer(tokenized, query):
     if len(query) == 0:
@@ -67,6 +71,7 @@ def answer(tokenized, query):
 
     return answers
 
+
 def main(argv):
     tokenized = parse(sys.stdin.read())
     answers = answer(tokenized, argv[1:])
@@ -74,6 +79,7 @@ def main(argv):
     print('\n'.join(answers))
 
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))

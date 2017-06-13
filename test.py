@@ -1,6 +1,7 @@
 import parser
 import unittest
 
+
 class ParserTest(unittest.TestCase):
     def test_answer_sample1_1(self):
         with open('./cases/sample1.md') as f:
@@ -173,12 +174,12 @@ class ParserTest(unittest.TestCase):
 
         self.assertEqual(
             [
-				'- クックパッド',
-				'    - https://cookpad.com',
-				'    - 開発メンバーとして、閲覧したレシピの記録機能を担当',
-				'- みんなのお弁当',
-				'    - https://itunes.apple.com/app/id977965019',
-				'    - UIデザインを除くプログラミング全般（サーバーサイド、アプリケーション）を担当',
+                '- クックパッド',
+                '    - https://cookpad.com',
+                '    - 開発メンバーとして、閲覧したレシピの記録機能を担当',
+                '- みんなのお弁当',
+                '    - https://itunes.apple.com/app/id977965019',
+                '    - UIデザインを除くプログラミング全般（サーバーサイド、アプリケーション）を担当',
             ],
             answer,
         )
