@@ -1,4 +1,5 @@
 import sys
+import re
 from collections import deque
 
 
@@ -24,17 +25,21 @@ def calculate_level(text):
         return 0
 
 
+def unescape_sharp(text):
+    return text.replace('\#', '#')
+
+
 def sanitize(text):
     level = calculate_level(text)
     if level > 0:
         header = text[text.rindex('# ')+1:].strip()
-        if header.endswith(' ' + '#' * (7 - level)):
-            new_header = header[:-8+level]
+        if re.search(r' (#)+$', header):
+            new_header = header[:header.rindex(' #')]
             return new_header
         else:
-            return header
+            return unescape_sharp(header)
     else:
-        return text
+        return unescape_sharp(text)
 
 
 def parse(text):
