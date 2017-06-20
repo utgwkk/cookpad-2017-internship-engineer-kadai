@@ -32,7 +32,7 @@ def unescape_sharp(text):
 def sanitize(text):
     level = calculate_level(text)
     if level > 0:
-        header = text[text.rindex('# ')+1:].strip()
+        header = text[text.index('# ')+1:].strip()
         if re.search(r' (#)+$', header):
             new_header = header[:header.rindex(' #')]
             return new_header
