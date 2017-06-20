@@ -128,7 +128,7 @@ class ParserTest(unittest.TestCase):
 
         self.assertEqual(
             answer,
-            ['####### not header!!!!', 'hoge'],
+            ['####### not header!!!!', '#also not header!!!!', 'hoge'],
         )
 
     def test_answer_portfolio_1(self):
@@ -183,6 +183,33 @@ class ParserTest(unittest.TestCase):
             ],
             answer,
         )
+
+    def test_answer_corner_1(self):
+        with open('./cases/corner.md') as f:
+            text = f.read()
+
+        tokenized = parser.parse(text)
+        query = ['ok']
+        answer = parser.answer(tokenized, query)
+
+        self.assertEqual(
+            ['a'],
+            answer,
+        )
+
+    def test_answer_corner_1(self):
+        with open('./cases/corner.md') as f:
+            text = f.read()
+
+        tokenized = parser.parse(text)
+        query = ['ok']
+        answer = parser.answer(tokenized, query)
+
+        self.assertEqual(
+            ['a'],
+            answer,
+        )
+
 
 
 if __name__ == '__main__':
