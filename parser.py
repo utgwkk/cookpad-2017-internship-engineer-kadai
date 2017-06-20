@@ -3,27 +3,27 @@ from collections import deque
 
 
 def calculate_level(text):
-    if text.startswith('#######'):
+    if text.startswith('####### '):
         return 0
-    elif text.startswith('######'):
+    elif text.startswith('###### '):
         return 1
-    elif text.startswith('#####'):
+    elif text.startswith('##### '):
         return 2
-    elif text.startswith('####'):
+    elif text.startswith('#### '):
         return 3
-    elif text.startswith('###'):
+    elif text.startswith('### '):
         return 4
-    elif text.startswith('##'):
+    elif text.startswith('## '):
         return 5
-    elif text.startswith('#'):
+    elif text.startswith('# '):
         return 6
     else:
         return 0
 
 
 def sanitize(text):
-    if text.startswith('#') and not text.startswith('#######'):
-        return text[text.rindex('#')+1:].strip()
+    if calculate_level(text) > 0:
+        return text[text.rindex('# ')+1:].strip()
     else:
         return text
 
