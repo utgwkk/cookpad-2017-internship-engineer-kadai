@@ -275,6 +275,19 @@ class ParserTest(unittest.TestCase):
             answer,
         )
 
+    def test_answer_corner_8(self):
+        with open('./cases/corner.md') as f:
+            text = f.read()
+
+        tokenized = parser.parse(text)
+        query = ['yo#']
+        answer = parser.answer(tokenized, query)
+
+        self.assertEqual(
+            ['yo'],
+            answer,
+        )
+
 
 
 if __name__ == '__main__':
