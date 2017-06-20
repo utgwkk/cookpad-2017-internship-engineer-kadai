@@ -197,16 +197,81 @@ class ParserTest(unittest.TestCase):
             answer,
         )
 
-    def test_answer_corner_1(self):
+    def test_answer_corner_2(self):
         with open('./cases/corner.md') as f:
             text = f.read()
 
         tokenized = parser.parse(text)
-        query = ['ok']
+        query = ['header 1']
         answer = parser.answer(tokenized, query)
 
         self.assertEqual(
-            ['a'],
+            ['hoge'],
+            answer,
+        )
+
+    def test_answer_corner_3(self):
+        with open('./cases/corner.md') as f:
+            text = f.read()
+
+        tokenized = parser.parse(text)
+        query = ['header 1', 'sub header 1']
+        answer = parser.answer(tokenized, query)
+
+        self.assertEqual(
+            ['fuga', '    ### not header'],
+            answer,
+        )
+
+    def test_answer_corner_4(self):
+        with open('./cases/corner.md') as f:
+            text = f.read()
+
+        tokenized = parser.parse(text)
+        query = ['header 2']
+        answer = parser.answer(tokenized, query)
+
+        self.assertEqual(
+            ['aaa'],
+            answer,
+        )
+
+    def test_answer_corner_5(self):
+        with open('./cases/corner.md') as f:
+            text = f.read()
+
+        tokenized = parser.parse(text)
+        query = ['escaped ###']
+        answer = parser.answer(tokenized, query)
+
+        self.assertEqual(
+            ['bbb'],
+            answer,
+        )
+
+    def test_answer_corner_6(self):
+        with open('./cases/corner.md') as f:
+            text = f.read()
+
+        tokenized = parser.parse(text)
+        query = ['escaped2 ###']
+        answer = parser.answer(tokenized, query)
+
+        self.assertEqual(
+            ['ccc'],
+            answer,
+        )
+
+    def test_answer_corner_7(self):
+        with open('./cases/corner.md') as f:
+            text = f.read()
+
+        tokenized = parser.parse(text)
+        query = ['foo ### bar']
+        answer = parser.answer(tokenized, query)
+
+        self.assertEqual(
+            ['hoho'],
             answer,
         )
 
