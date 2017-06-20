@@ -3,6 +3,9 @@ from collections import deque
 
 
 def calculate_level(text):
+    if text.startswith('    '):
+        return 0
+    text = text.lstrip()
     if text.startswith('####### '):
         return 0
     elif text.startswith('###### '):
@@ -22,8 +25,14 @@ def calculate_level(text):
 
 
 def sanitize(text):
-    if calculate_level(text) > 0:
-        return text[text.rindex('# ')+1:].strip()
+    level = calculate_level(text)
+    if level > 0:
+        header = text[text.rindex('# ')+1:].strip()
+        if header.endswith(' ' + '#' * (7 - level)):
+            new_header = header[:-8+level]
+            return new_header
+        else:
+            return header
     else:
         return text
 
